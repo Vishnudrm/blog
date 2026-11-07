@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light" data-section="learnings" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ledger</title>
+    <meta name="description" content="Notes on data engineering, systems, and the practical craft of building reliable software." />
+    <meta name="author" content="Vishnu P Rajagopal" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.vishnuprajagopal.com/blog/learnings" />
+    <meta property="og:title" content="Ledger" />
+    <meta property="og:description" content="Notes on data engineering, systems, and the practical craft of building reliable software." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.vishnuprajagopal.com/blog/learnings" />
+    <meta property="og:image" content="https://www.vishnuprajagopal.com/assets/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ledger" />
+    <meta name="twitter:description" content="Notes on data engineering, systems, and the practical craft of building reliable software." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('theme');
+          var userSelectedTheme = sessionStorage.getItem('themeUserSelected') === 'true';
+          var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = userSelectedTheme ? savedTheme === 'dark' : systemPrefersDark;
+
+          if (!userSelectedTheme && savedTheme === 'dark') {
+            localStorage.removeItem('theme');
+          }
+
+          var root = document.documentElement;
+          root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          root.classList.toggle('dark', isDark);
+          root.classList.toggle('theme-dark', isDark);
+        } catch (error) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="application/ld+json">
+      {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vishnu P Rajagopal",
+  "url": "https://www.vishnuprajagopal.com",
+  "sameAs": [
+    "https://github.com/Vishnudrm",
+    "https://linkedin.com/in/vishnu-p-rajagopal-585b8b216"
+  ],
+  "jobTitle": "Data Engineer",
+  "alumniOf": "CUSAT"
+}
+    </script>
+    <script type="application/ld+json">
+      [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vishnu P Rajagopal",
+    "url": "https://www.vishnuprajagopal.com",
+    "sameAs": [
+      "https://github.com/Vishnudrm",
+      "https://linkedin.com/in/vishnu-p-rajagopal-585b8b216"
+    ],
+    "jobTitle": "Data Engineer",
+    "alumniOf": "CUSAT"
+  }
+]
+    </script>
+  </head>
+  <body class="learnings-page">
+    <div class="loading-screen" aria-hidden="true">
+      <div class="loading-screen__word">explore.</div>
+      <div class="loading-screen__cursor"></div>
+    </div>
+
+    <div class="page-frame">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Main navigation">
+          <div class="nav-links">
+            <div class="nav-dropdown">
+              <a href="/blog" class="nav-trigger" aria-expanded="false" aria-controls="blog-menu">
+                <span>Blog</span>
+                <span class="nav-caret">▾</span>
+              </a>
+              <div id="blog-menu" class="dropdown-menu" role="menu">
+                <a href="/blog" role="menuitem">Explore the blog</a>
+                <a href="/blog/learnings" role="menuitem">Ledger</a>
+                <a href="/blog/letters" role="menuitem">Epiphanies</a>
+                <a href="/projects" role="menuitem">Blueprints</a>
+              </div>
+            </div>
+            <a href="/about">About</a>
+          </div>
+
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <span class="theme-toggle__icon">◐</span>
+          </button>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="archive-header reveal">
+  <p class="section-label section-label--learnings">Ledger</p>
+  <h1>Ledger</h1>
+  <p class="archive-intro">Notes on data engineering, systems, and the practical craft of building reliable software.</p>
+</section>
+
+<section class="archive-block reveal">
+  <ul class="post-list post-list--editorial">
+    
+      <li class="post-item reveal">
+        <article>
+          <div class="post-meta">
+            <span>Data Engineering</span>
+            <span>Sep 28, 2026</span>
+            <span>7 min read</span>
+          </div>
+          <a href="/blog/nl2sqlrm" class="post-title-link">The Model Was Never the Problem</a>
+          <p>A research observation on why schema context matters more than model quality in local NL2SQL pipelines — and what that tells us about how language models actually work.</p>
+        </article>
+      </li>
+    
+  </ul>
+</section>
+
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-links">
+            <a href="https://linkedin.com/in/vishnu-p-rajagopal-585b8b216" target="_blank" rel="noreferrer">Connect</a>
+            <a href="https://github.com/Vishnudrm" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/vishnu-p-rajagopal-585b8b216" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <span class="footer-copy">© 2026</span>
+        </div>
+      </footer>
+    </div>
+
+    <script defer src="/js/main.js"></script>
+  </body>
+</html>
