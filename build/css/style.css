@@ -972,11 +972,26 @@ body.loading-complete .loading-screen {
     align-items: flex-start;
     padding-top: 8px;
     flex-wrap: wrap;
+    gap: 12px;
   }
 
   .nav-links {
     flex-wrap: wrap;
     gap: 16px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    top: calc(100% + 10px);
+    left: 0;
+    width: min(220px, calc(100vw - 48px));
+    min-width: 0;
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.08);
   }
 
   .nav-links a.is-active::before {

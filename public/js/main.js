@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (dropdown && trigger) {
     trigger.addEventListener("click", (event) => {
       if (window.innerWidth <= 768) {
+        event.preventDefault();
         event.stopPropagation();
         const isOpen = dropdown.classList.toggle("is-open");
         trigger.setAttribute("aria-expanded", String(isOpen));
