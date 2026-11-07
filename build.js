@@ -134,6 +134,21 @@ function buildFaqSchema(faqs) {
   };
 }
 
+function buildWebsiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Vishnu",
+    url: SITE_URL,
+    description: "Personal blog by Vishnu P Rajagopal — field notes, builds, letters, and research at the intersection of data and thought.",
+    author: {
+      "@type": "Person",
+      name: "Vishnu P Rajagopal"
+    },
+    inLanguage: "en-IN"
+  };
+}
+
 function buildArticleSchema(post, canonicalUrl) {
   return {
     "@context": "https://schema.org",
@@ -143,17 +158,19 @@ function buildArticleSchema(post, canonicalUrl) {
     author: {
       "@type": "Person",
       name: "Vishnu P Rajagopal",
-      url: SITE_URL
+      url: `${SITE_URL}/about`
     },
     publisher: {
-      "@type": "Organization",
-      name: "Vishnu P Rajagopal",
-      url: SITE_URL
+      "@type": "Person",
+      name: "Vishnu P Rajagopal"
     },
-    mainEntityOfPage: canonicalUrl,
     datePublished: post.date,
     dateModified: post.date,
-    articleSection: post.section,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    },
+    inLanguage: "en-IN",
     keywords: post.tags.join(", ")
   };
 }
@@ -290,8 +307,26 @@ function buildBlogPage() {
       { name: "Blog", url: `${SITE_URL}/blog` }
     ]),
     pageType: "CollectionPage",
-    jsonLd: JSON.stringify([personSchema()], null, 2),
-    sectionKey: "home"
+    jsonLd: JSON.stringify([
+      personSchema(),
+      buildWebsiteSchema(),
+      buildFaqSchema([
+        {
+          question: "Who is Vishnu P Rajagopal?",
+          answer: "Vishnu P Rajagopal is a final-year Computer Science and Engineering student at CUSAT, Kochi, interested in data engineering, systems, AI, and personal writing."
+        },
+        {
+          question: "What does Vishnu write about?",
+          answer: "Vishnu writes field notes on research and technical observations, builds documenting engineering projects, and letters — personal essays on life, thought, and experience."
+        },
+        {
+          question: "What is NL2SQL?",
+          answer: "NL2SQL is a local CLI tool built by Vishnu that converts natural language questions into SQL queries using Ollama and DuckDB, entirely offline with no cloud API required."
+        }
+      ])
+    ], null, 2),
+    sectionKey: "home",
+    slug: "/blog"
   });
 }
 
@@ -450,14 +485,30 @@ function buildPostPage(post) {
         { name: post.title, url: canonicalUrl }
       ])
     ], null, 2),
-    sectionKey: post.section
+    sectionKey: post.section,
+    date: post.date,
+    tags: post.tags.join(", "),
+    category: post.category,
+    section: post.section,
+    slug: `/blog/${post.slug}`
   });
 }
 
-function wrapPage({ title, description, canonicalUrl, content, bodyClass, breadcrumbs, pageType, jsonLd, sectionKey = "home" }) {
+function wrapPage({ title, description, canonicalUrl, content, bodyClass, breadcrumbs, pageType, jsonLd, sectionKey = "home", date = "", tags = "", category = "", section = "", slug = "/" }) {
   const layout = templates.layout;
+  const siteUrl = SITE_URL.replace(/^https?:\/\//, "");
+  const routeSlug = slug || canonicalUrl.replace(SITE_URL, "") || "/";
 
   return renderTemplate(layout, {
+    title: escapeHtml(title),
+    description: escapeHtml(description),
+    siteUrl,
+    slug: routeSlug,
+    ogType: pageType === "Article" ? "article" : "website",
+    date: escapeHtml(date),
+    tags: escapeHtml(tags),
+    category: escapeHtml(category),
+    section: escapeHtml(section),
     pageTitle: escapeHtml(title),
     metaDescription: escapeHtml(description),
     canonicalUrl: escapeHtml(canonicalUrl),
